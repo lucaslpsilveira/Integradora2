@@ -8,14 +8,18 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formType: ''
+      formType: '',
+      info: null,
+      loading: true
     }
   }
 
   getResults(){      
       api.get('/city/distribuidoras/population/count')
       .then(res => {
-        console.log('processing',res.data);        
+        console.log('processing',res.data);
+        let info = res.data;
+        this.setState({info,loading:false});
       })
       .catch(async error => {
         console.log(error.response);        
@@ -26,7 +30,7 @@ class Home extends Component {
       this.getResults();
   }
 
-  loading = () => <Row className='shell-loader-monitor'>
+  loading = () => <Row>
     <Col md='12'>
       Loading...
     </Col>
@@ -35,7 +39,22 @@ class Home extends Component {
   render() {
     return (
       <>
-      conteudo
+        { this.state.loading ? this.loading() :
+          <>
+            <Row>
+              {this.state.info.map(line => {
+                return <Col md='4' className='mt-2 mb-2'>
+                  <Card>
+                    <CardHeader><b>{line.distribuidora}</b></CardHeader>
+                    <CardBody>
+                      <p><b>População estimada:</b> { line.populacaoEstimada}</p>
+                    </CardBody>
+                  </Card>
+                </Col>
+              })}              
+            </Row>            
+          </>
+        }
       </>
     );
   }
