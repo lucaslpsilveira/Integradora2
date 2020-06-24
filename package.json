@@ -1,5 +1,6 @@
 {
   "name": "integradora2",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,8 +9,11 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "cors": "^2.8.5",
     "custom-env": "^2.0.1",
+    "express": "^4.17.1",
     "node-sass": "^4.14.1",
+    "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-loadable": "^5.5.0",
@@ -17,7 +21,7 @@
     "react-scripts": "3.4.1",
     "reactstrap": "^8.5.1"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "https://integradora-ii-back-end.herokuapp.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
