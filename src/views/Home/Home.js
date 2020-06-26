@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, CardHeader } from 'reactstrap';
-import api from '../../services/api';
+import { Row, Col, Card, CardBody, CardHeader, Input } from 'reactstrap';
+import axios from 'axios';
 
 class Home extends Component {
 
@@ -14,21 +14,16 @@ class Home extends Component {
   }
 
   async getResults(){      
-      api.get('/city/distribuidoras/population/count/')
+      axios.defaults.headers['Content-Type'] = 'application/json';
+      axios.defaults.headers['crossDomain'] = true;
+      axios.defaults.headers['withCredentials'] = true;
+      axios.defaults.headers['use-redirect'] = false;
+
+      axios.get('/region/names')
       .then(async res => {
-        console.log('processing',res.data);        
+        console.log('processing',res);        
         let info = res.data;
-        await this.setState({info});
-        let cards = await info.map((line, i) => {
-          return <Col md='4' className='mt-2 mb-2' key={i}>
-          <Card>
-            <CardHeader><b>{line.distribuidora}</b></CardHeader>
-            <CardBody>
-              <p><b>População estimada:</b> { line.populacaoEstimada}</p>
-            </CardBody>
-          </Card>
-        </Col>});
-        await this.setState({cards});        
+        await this.setState({info});        
         await this.setState({loading:false});        
       })
       .catch(async error => {
@@ -51,8 +46,30 @@ class Home extends Component {
       <>
         { this.state.loading ? this.loading() :
           <>
+            <Row className='mt-2 mb-2'>
+              <Col md='4'>
+                <label>CNPJ:</label>
+                <Input/>
+              </Col>
+              <Col md='4'>
+                <label>Distribuidora:</label>
+                <Input/>
+              </Col>
+              <Col md='4'>
+                <label>Vigencia:</label>
+                <Input/>
+              </Col>
+            </Row>
+            <hr/>
             <Row>
-              {this.state.cards ? this.state.cards : <Col className='text-center mt-4'><h4>Nothing to show!</h4></Col>}              
+              {Array.isArray(this.state.info)
+                ? <>{this.state.info.map((line, i) => {
+                  return <Col md='4' className='mt-2 mb-2' key={i}>
+                    <Card>
+                      <CardHeader><b>{line}</b></CardHeader>            
+                    </Card>
+                  </Col>})}</> 
+                : <Col className='text-center mt-4'><h4>Nothing to show!</h4></Col>}              
             </Row>            
           </>
         }
