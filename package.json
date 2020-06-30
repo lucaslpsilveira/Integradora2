@@ -22,7 +22,6 @@
     "reactstrap": "^8.5.1",
     "typescript": "^3.9.5"
   },
-  "proxy": "https://integradora-ii-back-end.herokuapp.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

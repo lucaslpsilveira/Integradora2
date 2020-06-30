@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBody, CardHeader, Input } from 'reactstrap';
-import axios from 'axios';
+import api from '../../services/api';
 
 class Home extends Component {
 
@@ -13,13 +13,11 @@ class Home extends Component {
     }
   }
 
-  async getResults(){      
-      axios.defaults.headers['Content-Type'] = 'application/json';
-      axios.defaults.headers['crossDomain'] = true;
-      axios.defaults.headers['withCredentials'] = true;
-      axios.defaults.headers['use-redirect'] = false;
+  async getResults(){           
+      console.log(process.env.REACT_APP_API_URL);
+      console.log(api);
 
-      axios.get('/region/names')
+      api.get('/region/names')
       .then(async res => {
         console.log('processing',res);        
         let info = res.data;
