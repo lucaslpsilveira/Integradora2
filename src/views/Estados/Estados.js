@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardHeader, Input } from 'reactstrap';
+import { Row, Col, Card, CardBody, CardHeader, Input } from 'reactstrap';
 import api from '../../services/api';
 
 class Estados extends Component {
@@ -13,8 +13,9 @@ class Estados extends Component {
     }
   }
 
-  async getResults(){                
-      api.get('/state/names/?regiao=Sul')
+  async getResults(){        
+      let region = this.props.match.params.id;        
+      api.get('/state/names/?regiao='+region)
       .then(async res => {
         console.log('processing',res);        
         let info = res.data;

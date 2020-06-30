@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardHeader, Input } from 'reactstrap';
 import api from '../../services/api';
+import CardBody from 'reactstrap/lib/CardBody';
 
 class Home extends Component {
 
@@ -60,8 +61,9 @@ class Home extends Component {
               {Array.isArray(this.state.info)
                 ? <>{this.state.info.map((line, i) => {
                   return <Col md='4' className='mt-2 mb-2' key={i}>
-                    <Card onClick={() => {window.location = '/estados/?regiao='+line}}>
-                      <CardHeader><b>{line}</b></CardHeader>            
+                    <Card onClick={() => {window.location = '/estados/'+line}}>
+                      <CardHeader><b>{line}</b></CardHeader> 
+                      <CardBody className='regiaoCard'><img className='regioes' src={'/'+line+'.png'}/></CardBody>           
                     </Card>
                   </Col>})}</> 
                 : <Col className='text-center mt-4'><h4>Nothing to show!</h4></Col>}              
