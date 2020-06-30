@@ -13,8 +13,9 @@ class Cidades extends Component {
     }
   }
 
-  async getResults(){                
-      api.get('/city/distribuidoras/RS')
+  async getResults(){         
+      let state = this.props.match.params.id;
+      api.get('/city/distribuidoras/'+state)
       .then(async res => {
         console.log('processing',res);        
         let info = res.data;

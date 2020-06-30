@@ -60,7 +60,7 @@ class Estados extends Component {
               {Array.isArray(this.state.info)
                 ? <>{this.state.info.map((line, i) => {
                   return <Col md='4' className='mt-2 mb-2' key={i}>
-                    <Card onClick={() => {window.location = '/cidades/?estado='+line}}>
+                    <Card onClick={() => {window.location = '/cidades/'+line}}>
                       <CardHeader><b>{line}</b></CardHeader>            
                     </Card>
                   </Col>})}</> 
