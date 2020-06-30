@@ -62,7 +62,7 @@ class Estados extends Component {
                 ? <>{this.state.info.map((line, i) => {
                   return <Col md='4' className='mt-2 mb-2' key={i}>
                     <Card onClick={() => {window.location = '/cidades/'+line}}>
-                      <CardHeader><b>{line}</b></CardHeader>            
+                      <CardHeader><b>{line}</b><img className='flagEstados' src={'/estados/'+line+'.png'}/></CardHeader>            
                     </Card>
                   </Col>})}</> 
                 : <Col className='text-center mt-4'><h4>Nothing to show!</h4></Col>}              

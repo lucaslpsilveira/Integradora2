@@ -63,7 +63,7 @@ class Home extends Component {
                   return <Col md='4' className='mt-2 mb-2' key={i}>
                     <Card onClick={() => {window.location = '/estados/'+line}}>
                       <CardHeader><b>{line}</b></CardHeader> 
-                      <CardBody className='regiaoCard'><img className='regioes' src={'/'+line+'.png'}/></CardBody>           
+                      <CardBody className='regiaoCard'><img className='regioes' src={'/regioes/'+line+'.png'}/></CardBody>           
                     </Card>
                   </Col>})}</> 
                 : <Col className='text-center mt-4'><h4>Nothing to show!</h4></Col>}              

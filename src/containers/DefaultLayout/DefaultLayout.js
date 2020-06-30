@@ -19,7 +19,7 @@ class DefaultLayout extends Component {
           <button onClick={() => {window.location = '/'}} className="btn" id="menu-toggle"><b>Integradora 2</b></button>        
         </nav>
 
-        <div className="container-fluid">
+        <div className="container-fluid mb-4">
           <Suspense fallback={this.loading()}>                  
             <Switch>
               {routes.map((route, idx) => {
