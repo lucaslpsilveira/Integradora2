@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardHeader, Input } from 'reactstrap';
+import { Row, Col, Card, CardBody, CardHeader, Input } from 'reactstrap';
 import api from '../../services/api';
 
-class Home extends Component {
+class Cidades extends Component {
 
   constructor(props) {
     super(props);
@@ -13,8 +13,8 @@ class Home extends Component {
     }
   }
 
-  async getResults(){  
-      api.get('/region/names')
+  async getResults(){                
+      api.get('/city/distribuidoras/RS')
       .then(async res => {
         console.log('processing',res);        
         let info = res.data;
@@ -60,8 +60,11 @@ class Home extends Component {
               {Array.isArray(this.state.info)
                 ? <>{this.state.info.map((line, i) => {
                   return <Col md='4' className='mt-2 mb-2' key={i}>
-                    <Card onClick={() => {window.location = '/estados/?regiao='+line}}>
-                      <CardHeader><b>{line}</b></CardHeader>            
+                    <Card>
+                      <CardHeader><b>{line.distribuidora}</b></CardHeader>            
+                      <CardBody>
+                        <p><b>CNPJ: </b>{line.cnpj}</p>
+                      </CardBody>
                     </Card>
                   </Col>})}</> 
                 : <Col className='text-center mt-4'><h4>Nothing to show!</h4></Col>}              
@@ -73,4 +76,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Cidades;
