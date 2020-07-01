@@ -1,0 +1,6 @@
+{
+    "name": "Distribuidoras",
+    "version": "0.0.0",
+    "private": true,
+    "main": "./Distribuidoras.js"
+}

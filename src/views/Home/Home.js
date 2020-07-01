@@ -42,7 +42,7 @@ class Home extends Component {
       <>
         { this.state.loading ? this.loading() :
           <>
-            <Row className='mt-2 mb-2'>
+            {/*<Row className='mt-2 mb-2'>
               <Col md='4'>
                 <label>CNPJ:</label>
                 <Input/>
@@ -55,7 +55,7 @@ class Home extends Component {
                 <label>Vigencia:</label>
                 <Input/>
               </Col>
-            </Row>
+            </Row>*/}
             <hr/>
             <Row>
               {Array.isArray(this.state.info)
