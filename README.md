@@ -1,11 +1,13 @@
 # Integradora 2
 
+Acesse o projeto através de: https://integradora2-front-end.herokuapp.com/
+
 ## Configurando o projeto
 
 **Clone o repositório do git **
 
 ```sh
-    git clone 
+    git clone https://github.com/lucaslpsilveira/integradora2.git
 ```
 
 **Instale o npm**
