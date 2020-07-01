@@ -75,7 +75,7 @@ class Cidades extends Component {
                       <CardBody>
                         <Row>
                         {line.cityInfo.map(city =>{
-                          return <Col md='4'>
+                          return <Col md='4' className='mb-2'>
                             <Card>
                               <CardHeader>
                                 <h4>{city.nome}</h4>
